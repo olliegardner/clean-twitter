@@ -42,7 +42,7 @@ $(() => {
         predictions.forEach((label) => {
           for (x in label.results) {
             var revealButton = $(
-              "<button class='revealTweet'>Reveal Tweet</button>"
+              "<button type='button' class='btn btn-outline-primary revealTweet'>Reveal Tweet</button>"
             ).click((e) => revealTweet(e));
 
             var parent = tweets[x].parentElement;
