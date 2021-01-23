@@ -1,5 +1,5 @@
-$(function () {
-  setTimeout(function () {
+$(() => {
+  setTimeout(() => {
     var tweets = document.querySelectorAll("[data-testid='tweet']");
 
     var tweetTexts = [];
@@ -36,19 +36,39 @@ $(function () {
     ];
 
     toxicity.load(threshold, labelsToInclude).then((model) => {
-      // Now you can use the `model` object to label sentences.
+      // use the `model` object to label sentences.
       model.classify(tweetTexts).then((predictions) => {
         console.log(predictions);
         predictions.forEach((label) => {
           for (x in label.results) {
+            var revealButton = $(
+              "<button class='revealTweet'>Reveal Tweet</button>"
+            ).click((e) => revealTweet(e));
+
+            var parent = tweets[x].parentElement;
+
+            if (parent.classList.contains("blur")) {
+              continue;
+            }
+
             if (label.results[x].match) {
-              tweets[x].parentElement.classList.add("blur");
+              addBlur(parent, revealButton);
             } else if (label.results[x].match == null) {
-              tweets[x].parentElement.classList.add("blur");
+              addBlur(parent, revealButton);
             }
           }
         });
       });
     });
   }, 3000);
+
+  revealTweet = (e) => {
+    e.target.previousElementSibling.classList.remove("blur");
+    e.target.classList.add("hidden");
+  };
+
+  addBlur = (parent, revealButton) => {
+    parent.classList.add("blur");
+    revealButton.appendTo(parent.parentElement);
+  };
 });
