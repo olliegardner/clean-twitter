@@ -42,9 +42,9 @@ $(function () {
         predictions.forEach((label) => {
           for (x in label.results) {
             if (label.results[x].match) {
-              tweets[x].style.background = "red";
+              tweets[x].parentElement.classList.add("blur");
             } else if (label.results[x].match == null) {
-              tweets[x].style.background = "yellow";
+              tweets[x].parentElement.classList.add("blur");
             }
           }
         });

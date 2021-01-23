@@ -10,6 +10,7 @@
         "scripts/tfjstoxicity.js",
         "content.js"
       ],
+      "css": ["styles.css"],
       "matches": ["https://*.twitter.com/*"]
     }
   ],
