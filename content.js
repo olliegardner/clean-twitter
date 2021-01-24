@@ -1,8 +1,14 @@
+$(() => {
+  setTimeout(() => {
+    getTweets();
+  }, 2000);
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.execute) {
     $(() => {
-      setTimeout(() => {
-        getTweets();
+      setTimeout(async () => {
+        await getTweets();
       }, 100);
     });
 
@@ -13,7 +19,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   return true;
 });
 
-getTweets = () => {
+loadModel = async () => {
+  return await toxicity.load(0.75, [
+    "identity_attack",
+    "insult",
+    "threat",
+    "obscene",
+    "severe_toxicity",
+    "sexual_explicit",
+    "toxicity",
+  ]);
+};
+
+getTweets = async () => {
   var tweets = document.querySelectorAll("[data-testid='tweet']");
   var tweetTexts = [];
 
@@ -35,19 +53,6 @@ getTweets = () => {
 
   console.log(tweetTexts);
 
-  const threshold = 0.75;
-
-  // Which toxicity labels to return.
-  const labelsToInclude = [
-    "identity_attack",
-    "insult",
-    "threat",
-    "obscene",
-    "severe_toxicity",
-    "sexual_explicit",
-    "toxicity",
-  ];
-
   var colours = {
     identity_attack: "#9C27B0",
     insult: "#3959AB",
@@ -58,38 +63,38 @@ getTweets = () => {
     toxicity: "#827717",
   };
 
-  toxicity.load(threshold, labelsToInclude).then((model) => {
-    // use the `model` object to label sentences.
-    model.classify(tweetTexts).then((predictions) => {
-      console.log(predictions);
-      predictions.forEach((label) => {
-        for (x in label.results) {
-          var pillDiv = $("<div class='pillDiv'></div>");
-          var revealButton = $(
-            "<button type='button' class='btn btn-outline-primary revealTweet'>Reveal Tweet</button>"
-          ).click((e) => revealTweet(e));
+  var model = await loadModel();
 
-          var pill = $(
-            `<span class="badge rounded-pill pill" style='background-color:${
-              colours[label.label]
-            }'">${label.label.replace("_", " ")}: ${parseInt(
-              label.results[x].probabilities[1] * 100
-            )}%</span>`
-          );
+  // use the `model` object to label sentences.
+  model.classify(tweetTexts).then((predictions) => {
+    console.log(predictions);
+    predictions.forEach((label) => {
+      for (x in label.results) {
+        var pillDiv = $("<div class='pillDiv'></div>");
+        var revealButton = $(
+          "<button type='button' class='btn btn-outline-primary revealTweet'>Reveal Tweet</button>"
+        ).click((e) => revealTweet(e));
 
-          var parent = tweets[x].parentElement;
+        var pill = $(
+          `<span class="badge rounded-pill pill" style='background-color:${
+            colours[label.label]
+          }'">${label.label.replace("_", " ")}: ${parseInt(
+            label.results[x].probabilities[1] * 100
+          )}%</span>`
+        );
 
-          if (label.results[x].match || label.results[x].match == null) {
-            if (!parent.classList.contains("blur")) {
-              pill.appendTo(pillDiv);
-              addBlur(parent, revealButton);
-              pillDiv.appendTo(parent.parentElement);
-            } else {
-              pill.appendTo(tweets[x].parentElement.nextSibling.nextSibling);
-            }
+        var parent = tweets[x].parentElement;
+
+        if (label.results[x].match || label.results[x].match == null) {
+          if (!parent.classList.contains("blur")) {
+            pill.appendTo(pillDiv);
+            addBlur(parent, revealButton);
+            pillDiv.appendTo(parent.parentElement);
+          } else {
+            pill.appendTo(tweets[x].parentElement.nextSibling.nextSibling);
           }
         }
-      });
+      }
     });
   });
 };
