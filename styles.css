@@ -34,3 +34,12 @@
   top: 3px;
   right: -12px;
 }
+
+.statsDiv {
+  padding: 2% 0 3% 2%;
+}
+
+.profileStats {
+  color: #ffffff;
+  font-weight: 700;
+}
