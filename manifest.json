@@ -1,36 +1,40 @@
 {
-  "name": "Clean Twitter",
-  "version": "1.0",
-  "description": "Removing and flagging hateful content from your Twitter feed.",
-  "content_scripts": [
-    {
-      "js": [
-        "scripts/jquery.js",
-        "scripts/tfjs.js",
-        "scripts/tfjstoxicity.js",
-        "content.js"
-      ],
-      "css": ["scripts/bootstrap.min.css", "styles.css"],
-      "matches": ["https://*.twitter.com/*"]
-    }
-  ],
-  "permissions": [
-    "activeTab",
-    "declarativeContent",
-    "storage",
-    "webRequest",
-    "https://*/*",
-    "http://*/*"
-  ],
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "images/icon128.png",
-    "default_title": "Clean Twitter"
-  },
-  "icons": {
-    "32": "images/icon32.png",
-    "64": "images/icon64.png",
-    "128": "images/icon128.png"
-  },
-  "manifest_version": 2
+    "name": "Clean Twitter",
+    "version": "1.0",
+    "description": "Removing and flagging hateful content from your Twitter feed.",
+    "content_scripts": [{
+        "js": [
+            "scripts/jquery.js",
+            "scripts/tfjs.js",
+            "scripts/tfjstoxicity.js",
+            "content.js",
+            "config.js"
+        ],
+        "css": ["scripts/bootstrap.min.css", "styles.css"],
+        "matches": ["https://*.twitter.com/*"]
+    }],
+    "permissions": [
+        "activeTab",
+        "declarativeContent",
+        "storage",
+        "webRequest",
+        "tabs",
+        "https://*/*",
+        "http://*/*"
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": "images/icon128.png",
+        "default_title": "Clean Twitter"
+    },
+    "icons": {
+        "32": "images/icon32.png",
+        "64": "images/icon64.png",
+        "128": "images/icon128.png"
+    },
+    "manifest_version": 2
 }
