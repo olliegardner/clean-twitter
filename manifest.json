@@ -14,7 +14,18 @@
       "matches": ["https://*.twitter.com/*"]
     }
   ],
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "webRequest",
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": "images/icon128.png",
