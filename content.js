@@ -18,12 +18,11 @@ $(() => {
   }, 2000);
 });
 
-setInterval(async () => {
-  await getTweets();
-}, 2000);
+setInterval(async () => await getTweets(), 2000);
+setInterval(() => profiling(), 15000);
 
 loadModel = async () => {
-  return await toxicity.load(0.75, [
+  return await toxicity.load(0.7, [
     "identity_attack",
     "insult",
     "threat",
@@ -68,6 +67,7 @@ getTweets = async () => {
             loadedTweets
               .find((tweet) => tweet.content == text[x])
               .pills.push(pill);
+
             loadedTweets
               .find((tweet) => tweet.content == text[x])
               .pillLabels.push(label.label);
@@ -76,9 +76,7 @@ getTweets = async () => {
       }
     });
 
-    count += 1;
-
-    if (count % 10 == 0) {
+    if (count % 5 == 0) {
       chrome.runtime.sendMessage(
         { predictions: predictions, config: conf },
         function (response) {
@@ -86,6 +84,7 @@ getTweets = async () => {
         }
       );
     }
+    count += 1;
   });
 
   tweets.forEach((tweet) => {
@@ -153,6 +152,10 @@ addBlur = (parent, revealButton) => {
 profiling = () => {
   var profileHeader = document.querySelector("[aria-label='Profile timelines']")
     .previousElementSibling;
+
+  if (profileHeader.children.length == 3) {
+    profileHeader.children[2].remove();
+  }
 
   var statsDiv = $("<div class='statsDiv'></div>");
   statsDiv.appendTo(profileHeader);
