@@ -1,36 +1,36 @@
 .blur {
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-    filter: blur(10px);
-    background-color: transparent !important;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  background-color: transparent !important;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .revealTweet {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-color: #1da1f1 !important;
-    color: #1da1f1 !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-color: #1da1f1 !important;
+  color: #1da1f1 !important;
 }
 
 .revealTweet:hover {
-    background: rgba(29, 161, 242, 0.1) !important;
+  background: rgba(29, 161, 242, 0.1) !important;
 }
 
 .pill {
-    display: inline-block;
-    margin-right: 4px;
+  display: inline-block;
+  margin-right: 4px;
 }
 
 .pillDiv {
-    position: absolute;
-    top: 3px;
-    right: -12px;
+  position: absolute;
+  top: 3px;
+  right: -12px;
 }
