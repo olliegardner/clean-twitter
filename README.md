@@ -22,19 +22,17 @@ The volume of negativity on social media these days poses a day to day danger to
 
 ## Final product
 
-## How we built it
-
 ### Screenshots
 
-| ![Header](https://github.com/olliegardner/clean-twitter/blob/master/images/header.PNG?raw=true) | ![Censored tweet](https://github.com/olliegardner/clean-twitter/blob/master/images/before.PNG?raw=true) | ![Revealed tweet](https://github.com/olliegardner/clean-twitter/blob/master/images/after.PNG?raw=true) |
-| :---------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------ |
-|                                         Profile summary                                         |                                             Censored tweet                                              | Revealed tweet                                                                                         |
+| ![Header](https://github.com/olliegardner/clean-twitter/blob/master/media/header.PNG?raw=true) | ![Censored tweet](https://github.com/olliegardner/clean-twitter/blob/master/media/before.PNG?raw=true) | ![Revealed tweet](https://github.com/olliegardner/clean-twitter/blob/master/media/after.PNG?raw=true) |
+| :--------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: | ----------------------------------------------------------------------------------------------------- |
+|                                        Profile summary                                         |                                             Censored tweet                                             | Revealed tweet                                                                                        |
 
 ### GIFs
 
-| ![Scrolling through Twitter](https://github.com/olliegardner/clean-twitter/blob/master/images/header.PNG?raw=true) | ![Revealing a tweet](https://github.com/olliegardner/clean-twitter/blob/master/images/before.PNG?raw=true) |
-| :----------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
-|                                             Scrolling through Twitter                                              |                                             Revealing a tweet                                              |
+| ![Scrolling through Twitter](https://github.com/olliegardner/clean-twitter/blob/master/media/scrolling.gif?raw=true) | ![Revealing a tweet](https://github.com/olliegardner/clean-twitter/blob/master/media/pressing.gif?raw=true) |
+| :------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
+|                                              Scrolling through Twitter                                               |                                              Revealing a tweet                                              |
 
 ## How we built it
 
