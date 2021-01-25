@@ -1,6 +1,6 @@
 # Clean Twitter
 
-Clean Twitter was built for the University of Cambridge Hackathon 2021 (https://hackcambridge.com/). During the 36 hours of hacking we developed a Chrome Extension which removes negativity from Twitter profiles using Tensor Flow.
+Clean Twitter was built for the University of Cambridge Hackathon 2021 (https://hackcambridge.com/). During the 36 hours of hacking, we developed a Chrome Extension which removes negativity from Twitter profiles using machine learning.
 
 ## The challenge
 
@@ -52,7 +52,7 @@ The volume of negativity on social media these days poses a day to day danger to
 
 [TensorFlow JS](https://www.npmjs.com/package/@tensorflow/tfjs)
 
-###### Machine Learning Model
+#### Machine Learning Model
 
 [Toxicity](https://www.npmjs.com/package/@tensorflow-models/toxicity)
 
