@@ -2,6 +2,10 @@
 
 Clean Twitter was built for the University of Cambridge Hackathon 2021 (https://hackcambridge.com/). During the 36 hours of hacking, we developed a Chrome Extension which removes negativity from Twitter profiles using machine learning.
 
+## Authors
+- [Ollie Gardner](https://github.com/olliegardner)
+- [Fraser Dale](https://github.com/fraserdale)
+
 ## The challenge
 
 > The theme of this hackathon is to use data to create a hack for social good. This past year has seen increasing scrutiny of big technology, data privacy, social media and the impact that the digital world can have on the fabric of our society. Yet technology continues to revolutionise lives, drive societal improvements and provide hope for the future for many.
